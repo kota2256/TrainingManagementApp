@@ -6,3 +6,10 @@
 	padding: 15px;
 	margin:auto;	/*中央配置*/
 }
+
+.form-login{
+	width:100%;
+	max-width:500px;
+	padding: 15px;
+	margin:auto;
+}
