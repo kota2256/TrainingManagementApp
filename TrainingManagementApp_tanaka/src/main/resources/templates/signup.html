@@ -18,9 +18,9 @@
 		<form method="post" th:action="@{/signup}"  th:object="${signupForm}">
 			<!--ユーザー名-->
 			<div class="mt-5 mb-3">	
-				<label for="userName" th:text="#{userName}"></label>
-				<input type="text" class="form-control" th:field="*{userName}" th:errorclass="is-invalid"/>
-				<div class="invalid-feedback" th:errors="*{userName}"></div>
+				<label for="name" th:text="#{name}"></label>
+				<input type="text" class="form-control" th:field="*{name}" th:errorclass="is-invalid"/>
+				<div class="invalid-feedback" th:errors="*{name}"></div>
 			</div>
 			<!--パスワード-->
 			<div class="mb-3">	
@@ -30,9 +30,9 @@
 			</div>
 			<!--メールアドレス-->
 			<div class="mb-3">	
-				<label for="mail" th:text="#{mail}"></label>
-				<input type="text" class="form-control" th:field="*{mail}" th:errorclass="is-invalid"/>	
-				<div class="invalid-feedback" th:errors="*{mail}"></div>
+				<label for="email" th:text="#{email}"></label>
+				<input type="text" class="form-control" th:field="*{email}" th:errorclass="is-invalid"/>	
+				<div class="invalid-feedback" th:errors="*{email}"></div>
 			</div>
 			
 			<!--登録ボタン-->

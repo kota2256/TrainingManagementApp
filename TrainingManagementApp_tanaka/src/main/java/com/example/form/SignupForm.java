@@ -9,10 +9,10 @@ import lombok.Data;
 public class SignupForm {
 
 	@NotBlank
-	public String userName;
+	public String name;
 	@NotBlank
 	public String password;
 	@NotBlank
 	@Email
-	public String mail;
+	public String email;
 }
