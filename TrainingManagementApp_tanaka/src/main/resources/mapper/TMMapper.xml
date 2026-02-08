@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.example.repository.TMMapper">
+
+	<!-- ユーザー1件登録 --> 
+	<insert id="insertOne">
+		INSERT INTO users (
+			role_code,
+			name,
+			password,
+			email
+		)
+		VALUES(
+			#{roleCode},
+			#{name},
+			#{password},
+			#{email}
+		)
+	</insert>
+	
+</mapper>
