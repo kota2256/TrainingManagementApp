@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS users(
 	role_code	INT,
 	name			VARCHAR(255) NOT NULL,
 	password	VARCHAR(60) NOT NULL,
-	email			VARCHAR(255) NOT NULL,
+	email			VARCHAR(255) NOT NULL UNIQUE,
 	PRIMARY KEY(id), --プライマリーキー
 	FOREIGN KEY(role_code)	REFERENCES roles(code),	--外部キー
 	CHECK (id <= 999),

@@ -21,4 +21,11 @@
 		)
 	</insert>
 	
+	<!-- ログインユーザー取得 --> 
+	<select id="findLoginUser">
+		SELECT * 
+		FROM users 
+		WHERE email = #{email} 
+	</select>
+	
 </mapper>

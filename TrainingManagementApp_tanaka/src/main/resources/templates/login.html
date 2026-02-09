@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	
-<head？>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
 	<!--CSS読み込み-->
 	<link rel="stylesheet" th:href="@{/css/tmapp.css}">
-		
 	<title>ログイン</title>
 </head>
 <body>
 	<div class="form-login">
-		<form method="post" th:action="@{/login}" th:object="${}">
+		<form method="post" th:action="@{/login}">
 			<h6 class="text-center font-weight-bold mt-5 mb-5">ログイン</h6>
+			<!--ログインエラーメッセージ-->
+			<p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
+				th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+				 class="text-danger"></p>
 			<!--メールアドレス-->
 			<div class="mb-3">
 				<label for="email" th:text="#{email}"></label>
@@ -33,7 +34,6 @@
 			<!--新規登録へのリンク-->
 			<div class="text-center"><a th:href="@{/signup}" >新規登録はコチラ</a></div>
 		</form>
-		
 	</div>
 </body>
 </html>
