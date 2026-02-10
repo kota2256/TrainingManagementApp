@@ -4,8 +4,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 
@@ -19,7 +22,7 @@ public class SecurityConfig {		//WebSecurityConfigurerAdapterは現在非推奨
 	@Bean
 	protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
-			.csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
+			.csrf(csrf -> csrf.disable())	//csrf.ignoringRequestMatchers("/h2-console/**")
 			.headers(h -> h.frameOptions(f -> f.sameOrigin()))
 			.authorizeHttpRequests(authz -> authz
 				.requestMatchers("/css/**").permitAll()
@@ -48,22 +51,22 @@ public class SecurityConfig {		//WebSecurityConfigurerAdapterは現在非推奨
 	}
 	
 	//インメモリ認証
-//	@Bean
-//	protected UserDetailsService userDetailsService() {
-//		//ユーザーオブジェクト作成
-//		UserDetails user = User.builder()
-//			.username("user")
-//			.password(passwordEncoder().encode("user"))
-//			.roles("GENERAL")
-//			.build();
-//		UserDetails admin = User.builder()
-//			.username("admin")
-//			.password(passwordEncoder().encode("admin"))
-//			.roles("ADMIN")
-//			.build();
-//		
-//		return new InMemoryUserDetailsManager(user, admin);
-//	}
+	@Bean
+	InMemoryUserDetailsManager inMemoryUserDetailsManager() {
+		//ユーザーオブジェクト作成
+		UserDetails user = User
+			.withUsername("user@mail.com")
+			.password(passwordEncoder().encode("user"))
+			.roles("GENERAL")
+			.build();
+		UserDetails admin = User
+			.withUsername("admin@mail.com")
+			.password(passwordEncoder().encode("admin"))
+			.roles("ADMIN")
+			.build();
+		
+		return new InMemoryUserDetailsManager(user, admin);
+	}
 	
 	// ユーザー認証処理
 	
